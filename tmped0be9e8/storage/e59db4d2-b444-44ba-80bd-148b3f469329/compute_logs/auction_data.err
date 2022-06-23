@@ -1,0 +1,35 @@
+[32m2022-06-21 13:07:56 -0500[0m - dagster - [34mDEBUG[0m - get_data - e59db4d2-b444-44ba-80bd-148b3f469329 - 21502 - auction_data - LOGS_CAPTURED - Started capturing logs for step: auction_data.
+[32m2022-06-21 13:07:56 -0500[0m - dagster - [34mDEBUG[0m - get_data - e59db4d2-b444-44ba-80bd-148b3f469329 - 21502 - auction_data - STEP_START - Started execution of step "auction_data".
+[32m2022-06-21 13:07:57 -0500[0m - dagster - [34mERROR[0m - [31mget_data - e59db4d2-b444-44ba-80bd-148b3f469329 - 21502 - auction_data - STEP_FAILURE - Execution of step "auction_data" failed.
+
+dagster.core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "auction_data"::
+
+TypeError:        id    caseNumber  ...                 updatedAt regionId
+0       6  CJ-2020-1593  ...  2020-11-13T15:22:34.209Z      NaN
+1       7   CJ-2020-336  ...  2020-11-10T17:06:14.329Z      NaN
+2       9  CJ-2018-4257  ...  2020-11-16T15:11:56.435Z      NaN
+3      10  CJ-2019-4779  ...  2020-11-10T17:09:00.768Z      NaN
+4      11   CJ-2019-906  ...  2020-11-10T16:56:11.985Z      NaN
+..    ...           ...  ...                       ...      ...
+949  1284  CJ-2021-2012  ...  2022-06-02T23:08:03.879Z      NaN
+950  1299  CJ-2021-2630  ...  2022-06-17T13:39:09.902Z      NaN
+951  1169  CJ-2020-0692  ...  2022-06-06T18:31:39.165Z      NaN
+952  1231  CJ-2022-0370  ...  2022-06-07T13:45:51.933Z      NaN
+953  1240  CJ-2019-4582  ...  2022-06-14T16:08:39.220Z      NaN
+
+[954 rows x 68 columns] could not be converted to bytes
+
+Stack Trace:
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/dagster/core/execution/plan/utils.py", line 47, in solid_execution_error_boundary
+    yield
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/dagster/utils/__init__.py", line 406, in iterate_with_context
+    next_output = next(iterator)
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/dagster/core/execution/plan/compute_generator.py", line 66, in _coerce_solid_compute_fn_to_iterator
+    result = fn(context, **kwargs) if context_arg_provided else fn(**kwargs)
+  File "app.py", line 16, in auction_data
+    blob.upload_from_string(pandas.read_json(json.dumps(data[1:-1])))
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/google/cloud/storage/blob.py", line 2838, in upload_from_string
+    data = _to_bytes(data, encoding="utf-8")
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/google/cloud/_helpers/__init__.py", line 333, in _to_bytes
+    raise TypeError("%r could not be converted to bytes" % (value,))
+[0m

@@ -1,0 +1,32 @@
+[32m2022-06-21 13:04:06 -0500[0m - dagster - [34mDEBUG[0m - get_data - dad14e98-fbf6-4a9e-98c4-0732cb3b3a21 - 20090 - auction_data - LOGS_CAPTURED - Started capturing logs for step: auction_data.
+[32m2022-06-21 13:04:06 -0500[0m - dagster - [34mDEBUG[0m - get_data - dad14e98-fbf6-4a9e-98c4-0732cb3b3a21 - 20090 - auction_data - STEP_START - Started execution of step "auction_data".
+[32m2022-06-21 13:04:07 -0500[0m - dagster - [34mERROR[0m - [31mget_data - dad14e98-fbf6-4a9e-98c4-0732cb3b3a21 - 20090 - auction_data - STEP_FAILURE - Execution of step "auction_data" failed.
+
+dagster.core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "auction_data"::
+
+ValueError: Invalid file path or buffer object type: <class 'list'>
+
+Stack Trace:
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/dagster/core/execution/plan/utils.py", line 47, in solid_execution_error_boundary
+    yield
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/dagster/utils/__init__.py", line 406, in iterate_with_context
+    next_output = next(iterator)
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/dagster/core/execution/plan/compute_generator.py", line 66, in _coerce_solid_compute_fn_to_iterator
+    result = fn(context, **kwargs) if context_arg_provided else fn(**kwargs)
+  File "app.py", line 14, in auction_data
+    df = pandas.read_json(data[1:-1])
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/pandas/util/_decorators.py", line 207, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/pandas/io/json/_json.py", line 588, in read_json
+    json_reader = JsonReader(
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/pandas/io/json/_json.py", line 673, in __init__
+    data = self._get_data_from_filepath(filepath_or_buffer)
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/pandas/io/json/_json.py", line 710, in _get_data_from_filepath
+    self.handles = get_handle(
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/pandas/io/common.py", line 670, in get_handle
+    ioargs = _get_filepath_or_buffer(
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/pandas/io/common.py", line 427, in _get_filepath_or_buffer
+    raise ValueError(msg)
+[0m

@@ -1,0 +1,18 @@
+[32m2022-06-21 13:18:10 -0500[0m - dagster - [34mDEBUG[0m - get_data - ea0b6bdd-b482-41d1-8299-4270c2b9331b - 24528 - auction_data - LOGS_CAPTURED - Started capturing logs for step: auction_data.
+[32m2022-06-21 13:18:10 -0500[0m - dagster - [34mDEBUG[0m - get_data - ea0b6bdd-b482-41d1-8299-4270c2b9331b - 24528 - auction_data - STEP_START - Started execution of step "auction_data".
+[32m2022-06-21 13:18:12 -0500[0m - dagster - [34mERROR[0m - [31mget_data - ea0b6bdd-b482-41d1-8299-4270c2b9331b - 24528 - auction_data - STEP_FAILURE - Execution of step "auction_data" failed.
+
+dagster.core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "auction_data"::
+
+TypeError: dumps() takes 1 positional argument but 2 were given
+
+Stack Trace:
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/dagster/core/execution/plan/utils.py", line 47, in solid_execution_error_boundary
+    yield
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/dagster/utils/__init__.py", line 406, in iterate_with_context
+    next_output = next(iterator)
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/dagster/core/execution/plan/compute_generator.py", line 66, in _coerce_solid_compute_fn_to_iterator
+    result = fn(context, **kwargs) if context_arg_provided else fn(**kwargs)
+  File "app.py", line 17, in auction_data
+    json.dumps(data, i)
+[0m

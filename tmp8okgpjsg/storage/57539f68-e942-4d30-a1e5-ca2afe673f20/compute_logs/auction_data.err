@@ -1,0 +1,5 @@
+[32m2022-06-23 12:42:32 -0500[0m - dagster - [34mDEBUG[0m - get_data - 57539f68-e942-4d30-a1e5-ca2afe673f20 - 4427 - auction_data - LOGS_CAPTURED - Started capturing logs for step: auction_data.
+[32m2022-06-23 12:42:32 -0500[0m - dagster - [34mDEBUG[0m - get_data - 57539f68-e942-4d30-a1e5-ca2afe673f20 - 4427 - auction_data - STEP_START - Started execution of step "auction_data".
+[32m2022-06-23 12:42:35 -0500[0m - dagster - [34mDEBUG[0m - get_data - 57539f68-e942-4d30-a1e5-ca2afe673f20 - 4427 - auction_data - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+[32m2022-06-23 12:42:35 -0500[0m - dagster - [34mDEBUG[0m - get_data - 57539f68-e942-4d30-a1e5-ca2afe673f20 - 4427 - auction_data - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2022-06-23 12:42:35 -0500[0m - dagster - [34mDEBUG[0m - get_data - 57539f68-e942-4d30-a1e5-ca2afe673f20 - 4427 - auction_data - STEP_SUCCESS - Finished execution of step "auction_data" in 2.93s.

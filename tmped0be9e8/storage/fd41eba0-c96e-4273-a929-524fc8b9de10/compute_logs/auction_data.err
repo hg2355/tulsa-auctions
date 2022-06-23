@@ -1,0 +1,30 @@
+[32m2022-06-21 13:13:29 -0500[0m - dagster - [34mDEBUG[0m - get_data - fd41eba0-c96e-4273-a929-524fc8b9de10 - 23330 - auction_data - LOGS_CAPTURED - Started capturing logs for step: auction_data.
+[32m2022-06-21 13:13:29 -0500[0m - dagster - [34mDEBUG[0m - get_data - fd41eba0-c96e-4273-a929-524fc8b9de10 - 23330 - auction_data - STEP_START - Started execution of step "auction_data".
+[32m2022-06-21 13:13:30 -0500[0m - dagster - [34mERROR[0m - [31mget_data - fd41eba0-c96e-4273-a929-524fc8b9de10 - 23330 - auction_data - STEP_FAILURE - Execution of step "auction_data" failed.
+
+dagster.core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "auction_data"::
+
+AttributeError: 'list' object has no attribute 'tell'
+
+Stack Trace:
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/dagster/core/execution/plan/utils.py", line 47, in solid_execution_error_boundary
+    yield
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/dagster/utils/__init__.py", line 406, in iterate_with_context
+    next_output = next(iterator)
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/dagster/core/execution/plan/compute_generator.py", line 66, in _coerce_solid_compute_fn_to_iterator
+    result = fn(context, **kwargs) if context_arg_provided else fn(**kwargs)
+  File "app.py", line 16, in auction_data
+    blob.upload_from_file(data[1:-1])
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/google/cloud/storage/blob.py", line 2567, in upload_from_file
+    created_json = self._do_upload(
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/google/cloud/storage/blob.py", line 2384, in _do_upload
+    response = self._do_resumable_upload(
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/google/cloud/storage/blob.py", line 2211, in _do_resumable_upload
+    upload, transport = self._initiate_resumable_upload(
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/google/cloud/storage/blob.py", line 2092, in _initiate_resumable_upload
+    upload.initiate(
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/google/resumable_media/requests/upload.py", line 402, in initiate
+    method, url, payload, headers = self._prepare_initiate_request(
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/google/resumable_media/_upload.py", line 461, in _prepare_initiate_request
+    if stream.tell() != 0:
+[0m

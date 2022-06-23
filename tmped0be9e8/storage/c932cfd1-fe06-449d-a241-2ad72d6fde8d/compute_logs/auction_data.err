@@ -1,0 +1,18 @@
+[32m2022-06-21 13:11:38 -0500[0m - dagster - [34mDEBUG[0m - get_data - c932cfd1-fe06-449d-a241-2ad72d6fde8d - 22731 - auction_data - LOGS_CAPTURED - Started capturing logs for step: auction_data.
+[32m2022-06-21 13:11:38 -0500[0m - dagster - [34mDEBUG[0m - get_data - c932cfd1-fe06-449d-a241-2ad72d6fde8d - 22731 - auction_data - STEP_START - Started execution of step "auction_data".
+[32m2022-06-21 13:11:40 -0500[0m - dagster - [34mERROR[0m - [31mget_data - c932cfd1-fe06-449d-a241-2ad72d6fde8d - 22731 - auction_data - STEP_FAILURE - Execution of step "auction_data" failed.
+
+dagster.core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "auction_data"::
+
+AttributeError: 'str' object has no attribute 'to_csv'
+
+Stack Trace:
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/dagster/core/execution/plan/utils.py", line 47, in solid_execution_error_boundary
+    yield
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/dagster/utils/__init__.py", line 406, in iterate_with_context
+    next_output = next(iterator)
+  File "/home/hg2355/.pyenv/versions/3.9.10/lib/python3.9/site-packages/dagster/core/execution/plan/compute_generator.py", line 66, in _coerce_solid_compute_fn_to_iterator
+    result = fn(context, **kwargs) if context_arg_provided else fn(**kwargs)
+  File "app.py", line 16, in auction_data
+    blob.upload_from_file(json.dumps(data[1:-1]).to_csv())
+[0m
